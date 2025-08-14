@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inscrições e Sugestões</title>
+    <link rel="stylesheet" href="Web.css">
+</head>
+<body>
+
+    <header>
+        <h1><strong>Sagrado coração de jesus</strong></h1> 
+       <div style="text-align: center;">
+    <img src="fotos.jpg" style="width: 900px;">
+</div>
+ <h1>Preencha os formulários abaixo para participar e interagir.</h1>
+  
+    </header>
+
+    <main>
+    
+        <section id="cadastro">
+            <h2>Formulário de Cadastro</h2>
+            <form id="cadastroForm">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" name="senha" required>
+
+                <button type="submit">Cadastrar</button>
+            </form>
+        </section>
+
+        <hr>
+
+        <section id="comentarios">
+            <h2>Comentários e Sugestões</h2>
+            <form id="comentariosForm">
+                <label for="comentario">Sua Mensagem:</label>
+                <textarea id="comentario" name="comentario" rows="4" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+            <div id="listaComentarios">
+                </div>
+        </section>
+
+        <hr>
+
+        <section id="matricula">
+            <h2>Matrícula para Eventos</h2>
+            <form id="matriculaForm">
+                <label for="nomeMatricula">Nome Completo:</label>
+                <input type="text" id="nomeMatricula" name="nomeMatricula" required>
+
+                <label for="evento">Selecione o Evento:</label>
+                <select id="evento" name="evento" required>
+                    <option value="">-- Escolha um evento --</option>
+                    <option value="quermesse">Quermesse</option>
+                    <option value="bingo">Bingo</option>
+                    <option value="grupoJovens">Grupo de Jovens</option>
+                    <option value="grupoOracao">Grupo de Oração</option>
+                </select>
+
+                <button type="submit">Inscrever</button>
+            </form>
+            <div id="listaMatriculas">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Sagrado coração de jesus. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
