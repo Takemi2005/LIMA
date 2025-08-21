@@ -1,8 +1,13 @@
-/* Estilos gerais da página */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+}
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #e6e0da; /* Fundo mais claro para combinar */
-    color: #4A352C; /* Cor do texto principal (castanho escuro) */
+    background-color: #e6e0da; 
+    color: #4A352C; 
     margin: 0;
     padding: 0;
     line-height: 1.6;

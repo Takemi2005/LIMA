@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens Dinâmicas</title>
+</head>
+<body>
+    <h1>Imagens Dinâmicas</h1>
+   
+    <picture>
+        <source media="(max-width: 100px)" srcset="Cadeira.jpg" type="image/png">
+        <img src="Cadeira.jpg" alt="A imagem flexivel funciona">
+
+        <source media="(max-width: 100px)" srcset="Cadeira.jpg" type="image/jpeg">
+        <img src="Cadeira.png" alt="A imagem flexivel funciona">
+
+        <source media="(max-width:200px )" srcset="Cadeira.png" type="image/png">
+        <img src="Cadeira.png" alt="A imagem flexivel funciona">
+
+        <source media="(max-width: 600px)" srcset="Cadeira2.png" type="image/png">
+        <img src="Cadeira2.png" alt="A imagem flexivel funciona">
+
+        <source media="(max-width: 800px)" srcset="Cadeira3.png" type="image/png">
+        <img src="Cadeira3.png" alt="A imagem flexivel funciona">
+    </picture>
+
+    <h1>Audio</h1>
+<audio preload="metadata" controls autoplay loop>
+<source src="Stranger_Things.mp3" type="audio/mpeg">
+<source src="Stranger_Things.ogg" type="audio/ogg">
+<source src="Stranger_Things.wav" type="image/wav">
+<p> Seu navegador não suporta áudio <a href="Stranger_Things.mp3"
+download="Abertura_Stranger_Things.mp3" type="audio/mpeg"></a></p>
+</audio>
+
+<h1>Video</h1>
+<video width="600" poster="Stranger_Things.jpg" controls
+autoplay>
+<source src="Stranger_Things.mp4" type="video/mp4">
+<source src="Stranger_Things.webm" type="video/webm">
+<source src="Stranger_Things.ogv" type="video/ogg">
+<p> Infelizmente seu navegador não suporta carregar o
+vídeo </a></p>
+</video>
+
+<h1>Incorporar Video</h1>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_Z5-P9v3F8w?si=9i5R7Lwca9CFrQAV" 
+title="YouTube video player" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+</body>
+</html>
+
