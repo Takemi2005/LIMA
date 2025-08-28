@@ -1,0 +1,36 @@
+h1 {
+    color: pink;
+    background-color: black;
+    text-align: center;
+    padding: 10px;
+    margin-left: 50px;
+    height: 150px;
+}
+
+h1:hover {
+    color: blue;
+    background-color: black;
+    padding: 15px;
+}
+
+
+h2 {
+    color: white;
+    background-color: blue;
+    text-align: center;
+    padding: 10px;
+    margin-left: 50px;
+    height: 120px;
+
+}
+
+h2:hover {
+    color: yellow;
+    background-color: blue;
+    padding: 15px;
+}
+
+img{
+    height: 70px;
+    width: auto;
+}
