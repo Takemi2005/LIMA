@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/*Problemas com acentuação*/
+
+/* Importação de fonte */
+@import url('https://fonts.googleapis.com/css2?family=Story+Script&display=swap');
+
+@font-face {
+    font-family: 'Story Script';
+    src: url('StoryScript-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: 50em;
+}
+
+h2 {
+    color: blueviolet;
+    font-size: 10em;
+}
+
+body {
+    background-color: beige;
+    /*background-image: linear-gradient(90deg, yellow, red);*/
+    /*background-image: radial-gradient(circle, red,yellow, green);*/
+    font-family: 'Story Script', cursive;
+
+    font-family: 'Roboto';
+}
+
+p {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    font-style: italic;
+    font-weight: bold;
+
+}
+p {
+    font: italic bold 2em Arial, sans-serif;
+}
+#titulo-principal {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+
+}
+.topico {
+    text-align: right;
+}
+.texto {
+    text-align: justify;
+}
+a {
+    font-weight: bold;
+    text-decoration: none;
+    color: red;
+}
+a:visited {
+    color: darkred;
+}
+a:hover {
+    text-decoration: underline;
+}
+.especial:houver {
+    color: white;
+    background-color: black;
+    text-decoration: none;
+}   
+.especial:before {
+    content: ">> ";
+    font-weight: lighter;
+}
+.especial:after {
+    content: " <";
+    font-weight: lighter;
+}
+div > p {
+    display: block;
+}
+div:hover > p {
+    display: none;
+    background-color: yellowgreen;
+}
