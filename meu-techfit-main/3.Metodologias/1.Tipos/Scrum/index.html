@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum para TechFit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1000px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card-scrum {
+            background-color: #f1f5f9;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto space-y-12">
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-gray-800">Scrum para o Projeto TechFit</h1>
+            <p class="mt-2 text-lg text-gray-600">Nós (Joel e Luiza) vamos conduzir este projeto com Scrum, escrever este material e dividir as tarefas entre nós ao longo dos sprints.</p>
+        </header>
+
+        <!-- Product Backlog -->
+        <div class="card p-6">
+            <h2 class="text-2xl font-bold mb-4">Product Backlog</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-lg">Módulo de Agendamento</h3>
+                    <p class="text-sm text-gray-600">Permitiremos que alunos agendem e cancelem aulas.</p>
+                </div>
+                <div class="card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-lg">Módulo de Controle de Acesso</h3>
+                    <p class="text-sm text-gray-600">Integraremos com QR Code ou biometria.</p>
+                </div>
+                <div class="card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-lg">Módulo de Comunicação</h3>
+                    <p class="text-sm text-gray-600">Enviaremos notificações personalizadas.</p>
+                </div>
+                <div class="card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-lg">Painel Administrativo</h3>
+                    <p class="text-sm text-gray-600">Criaremos uma ferramenta para gerenciar alunos e aulas.</p>
+                </div>
+                <div class="card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-lg">Módulo de Avaliação Física</h3>
+                    <p class="text-sm text-gray-600">Registraremos e acompanharemos avaliações.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sprint Backlog & Increment -->
+        <div class="card p-6">
+            <h2 class="text-2xl font-bold mb-4">Sprint 1: Foco em Agendamento Online</h2>
+            <div class="flex flex-col md:flex-row items-stretch gap-6">
+                <!-- Sprint Backlog -->
+                <div class="flex-1 card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-xl mb-2">Sprint Backlog</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <li>Desenvolveremos a interface de visualização de aulas.</li>
+                        <li>Implementaremos a lógica de agendamento e cancelamento.</li>
+                        <li>Integraremos a simulação de controle de vagas.</li>
+                        <li>Criaremos o protótipo do painel administrativo.</li>
+                    </ul>
+                </div>
+                
+                <!-- Increment -->
+                <div class="flex-1 card-scrum p-4 rounded-lg">
+                    <h3 class="font-semibold text-xl mb-2">Incremento Planejado</h3>
+                    <div class="bg-white p-4 rounded-lg shadow-inner">
+                        <h4 class="font-bold text-green-700">Incremento previsto:</h4>
+                        <p class="text-sm text-gray-600 mt-1">Entregaremos um protótipo funcional com agendamento de aulas, painel de administração básico e visualização de vagas em tempo real.</p>
+                        <p class="mt-2 text-xs text-gray-500">Será preparado para demonstração e feedback.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eventos Scrum -->
+        <div class="card p-6">
+            <h2 class="text-2xl font-bold mb-4">Eventos Principais</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-gray-200 p-4 rounded-lg">
+                    <h3 class="font-bold">"Weekly" Scrum</h3>
+                    <p class="text-sm text-gray-700 mt-1">Realizaremos uma reunião semanal, durante as aulas de Projeto, para sincronizar a equipe: "O que fizemos? O que faremos? Quais impedimentos removeremos?"</p>
+                </div>
+                <div class="bg-gray-200 p-4 rounded-lg">
+                    <h3 class="font-bold">Sprint Review</h3>
+                    <p class="text-sm text-gray-700 mt-1">Apresentaremos o Incremento aos stakeholders para coletar feedback sobre o protótipo.</p>
+                </div>
+                <div class="bg-gray-200 p-4 rounded-lg">
+                    <h3 class="font-bold">Sprint Retrospective</h3>
+                    <p class="text-sm text-gray-700 mt-1">Analisaremos o processo do sprint para identificar o que funcionou e o que poderá ser melhorado.</p>
+                </div>
+                <div class="bg-gray-200 p-4 rounded-lg">
+                    <h3 class="font-bold">Sprint Planning</h3>
+                    <p class="text-sm text-gray-700 mt-1">No início de cada sprint, nos reuniremos para planejar o trabalho e definir o objetivo do ciclo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

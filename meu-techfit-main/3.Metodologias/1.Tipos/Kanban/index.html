@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban para TechFit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .kanban-col {
+            background-color: #e5e7eb;
+            border-radius: 12px;
+        }
+        .kanban-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        /* UX: visual feedback and better pointer while dragging */
+        .kanban-card { cursor: grab; user-select: none; }
+        .kanban-card:active { cursor: grabbing; }
+        .drop-highlight { outline: 2px dashed #60a5fa; outline-offset: 4px; }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800">Kanban para o Projeto TechFit</h1>
+            <p class="mt-2 text-lg text-gray-600">Nós (Joel e Luiza) vamos escrever este material e conduzir o projeto com Kanban, visualizando o fluxo e limitando o trabalho em progresso (WIP), dividindo as tarefas entre nós.</p>
+        </header>
+
+        <div class="flex flex-col md:flex-row gap-6">
+            <!-- Coluna: A Fazer -->
+            <div class="kanban-col flex-1 p-4 space-y-4">
+                <h2 class="text-xl font-bold text-center text-gray-700">A Fazer</h2>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Módulo de Comunicação</h3>
+                    <p class="text-sm text-gray-500">Criaremos um sistema de notificações por e-mail e SMS.</p>
+                </div>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Controle de Acesso</h3>
+                    <p class="text-sm text-gray-500">Desenvolveremos um leitor de QR Code para as catracas.</p>
+                </div>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Avaliação Física</h3>
+                    <p class="text-sm text-gray-500">Criaremos uma interface para registro de avaliações.</p>
+                </div>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Painel Administrativo</h3>
+                    <p class="text-sm text-gray-500">Desenvolveremos a função de gerar relatórios.</p>
+                </div>
+            </div>
+
+            <!-- Coluna: Em Desenvolvimento -->
+            <div class="kanban-col flex-1 p-4 space-y-4">
+                <h2 class="text-xl font-bold text-center text-gray-700">Em Desenvolvimento</h2>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Interface de Agendamento</h3>
+                    <p class="text-sm text-gray-500">Desenvolveremos a interface para a visualização de aulas.</p>
+                </div>
+                <div class="kanban-card p-4">
+                    <h3 class="font-semibold">Lógica de Agendamento</h3>
+                    <p class="text-sm text-gray-500">Implementaremos a funcionalidade de agendar/cancelar aulas.</p>
+                </div>
+            </div>
+
+            <!-- Coluna: Em Revisão -->
+            <div class="kanban-col flex-1 p-4 space-y-4">
+                <h2 class="text-xl font-bold text-center text-gray-700">Em Revisão</h2>
+                <div class="kanban-card p-4 bg-yellow-100 border-l-4 border-yellow-500">
+                    <h3 class="font-semibold">Protótipo de Agendamento</h3>
+                    <p class="text-sm text-gray-600">Verificaremos se o protótipo atenderá aos requisitos iniciais.</p>
+                </div>
+            </div>
+
+            <!-- Coluna: Concluído -->
+            <div class="kanban-col flex-1 p-4 space-y-4">
+                <h2 class="text-xl font-bold text-center text-gray-700">Concluído</h2>
+                <div class="kanban-card p-4 bg-green-100 border-l-4 border-green-500">
+                    <h3 class="font-semibold">Análise de Requisitos</h3>
+                    <p class="text-sm text-gray-600">Finalizaremos o documento de requisitos do projeto TechFit.</p>
+                </div>
+                <div class="kanban-card p-4 bg-green-100 border-l-4 border-green-500">
+                    <h3 class="font-semibold">Esboço do Sistema</h3>
+                    <p class="text-sm text-gray-600">Concluiremos o esqueleto da página web.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Drag-and-drop with precise insertion point based on cursor position
+        (function () {
+            const cols = Array.from(document.querySelectorAll('.kanban-col'));
+            const cards = Array.from(document.querySelectorAll('.kanban-card'));
+
+            // Make all cards draggable
+            cards.forEach(card => card.setAttribute('draggable', 'true'));
+
+            let dragged = null;
+
+            function onDragStart(e) {
+                dragged = this;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', '');
+                this.classList.add('opacity-60', 'ring-2', 'ring-indigo-400', 'dragging');
+            }
+
+            function onDragEnd() {
+                this.classList.remove('opacity-60', 'ring-2', 'ring-indigo-400', 'dragging');
+                cols.forEach(c => c.classList.remove('drop-highlight'));
+                dragged = null;
+            }
+
+            function getDragAfterElement(container, y) {
+                const elements = [...container.querySelectorAll('.kanban-card:not(.dragging)')];
+                let closest = { offset: Number.NEGATIVE_INFINITY, element: null };
+                for (const child of elements) {
+                    const box = child.getBoundingClientRect();
+                    const offset = y - (box.top + box.height / 2);
+                    if (offset < 0 && offset > closest.offset) {
+                        closest = { offset, element: child };
+                    }
+                }
+                return closest.element;
+            }
+
+            function onColDragOver(e) {
+                if (!dragged) return;
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                this.classList.add('drop-highlight');
+
+                const afterElement = getDragAfterElement(this, e.clientY);
+                if (afterElement == null) {
+                    // Insert at the end of the cards in this column
+                    this.appendChild(dragged);
+                } else {
+                    this.insertBefore(dragged, afterElement);
+                }
+            }
+
+            function onColDragLeave() {
+                this.classList.remove('drop-highlight');
+            }
+
+            function onColDrop(e) {
+                // Position already adjusted on dragover; finalize drop
+                e.preventDefault();
+                this.classList.remove('drop-highlight');
+            }
+
+            // Bind events
+            cards.forEach(card => {
+                card.addEventListener('dragstart', onDragStart);
+                card.addEventListener('dragend', onDragEnd);
+            });
+
+            cols.forEach(col => {
+                col.addEventListener('dragover', onColDragOver);
+                col.addEventListener('dragleave', onColDragLeave);
+                col.addEventListener('drop', onColDrop);
+            });
+        })();
+    </script>
+</body>
+</html>

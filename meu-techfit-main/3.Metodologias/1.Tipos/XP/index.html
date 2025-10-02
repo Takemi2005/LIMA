@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XP para TechFit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .practice-card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="p-8">
+    <div class="container mx-auto space-y-12">
+        <header class="text-center">
+            <h1 class="text-4xl font-bold text-gray-800">XP no Projeto TechFit</h1>
+            <p class="mt-2 text-lg text-gray-600">Nós (Joel e Luiza) vamos conduzir este projeto com XP e escrever este material, com foco em qualidade técnica e entregas contínuas.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Pair Programming -->
+            <div class="practice-card p-6 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-blue-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Pair Programming</h3>
+                <p class="text-gray-600">Vamos programar em par: enquanto um codificar, o outro revisará em tempo real, e alternaremos os papéis a cada tarefa.</p>
+            </div>
+
+            <!-- Test-Driven Development -->
+            <div class="practice-card p-6 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-green-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Test-Driven Development (TDD)</h3>
+                <p class="text-gray-600">Praticaremos TDD: primeiro escreveremos o teste da funcionalidade (por exemplo, o botão "Agendar"), depois implementaremos o código até o teste passar.</p>
+            </div>
+
+            <!-- Continuous Integration -->
+            <div class="practice-card p-6 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-yellow-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h7" />
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Integração Contínua</h3>
+                <p class="text-gray-600">Integraremos o código com frequência, evitando conflitos e mantendo o sistema sempre funcional.</p>
+            </div>
+
+            <!-- Small Releases -->
+            <div class="practice-card p-6 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                </svg>
+                <h3 class="text-xl font-bold mb-2">Pequenas Entregas</h3>
+                <p class="text-gray-600">Faremos pequenas entregas frequentes (lista de aulas, botão "Agendar" etc.), dividindo as tarefas entre nós e validando a cada incremento.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
