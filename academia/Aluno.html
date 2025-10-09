@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFit - Área Administrativa</title>
+    <link rel="icon" type="image/png" href="img/meuTechFit-fav.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-primary {
+            background-color: #0500ff;
+            color: white;
+        }
+        .btn-primary:hover {
+            background-color: #0300b3;
+        }
+        .btn-secondary {
+            background-color: #f3f4f6;
+            color: #0500ff;
+            border: 1px solid #d1d5db;
+        }
+        .btn-secondary:hover {
+            background-color: #e5e7eb;
+            color: #0300b3;
+        }
+        .btn-danger {
+            background-color: #ef4444;
+            color: white;
+        }
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+        .success-message {
+            background-color: #e0e7ff;
+            color: #0500ff;
+            border-left: 4px solid #0500ff;
+        }
+        .error-message {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid #ef4444;
+        }
+        .input-field {
+            padding: 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div id="app" class="container mx-auto">
+        <header class="text-center mb-10">
+            <img src="img/meuTechFit-logo.png" alt="TechFit" class="mx-auto mb-6" style="max-width: 320px;">
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Painel Administrativo</h1>
+            <p class="text-lg text-gray-600">Gerenciamento de aulas e agendamentos</p>
+        </header>
+
+        <!-- Navegação -->
+        <div class="mb-6 text-center">
+            <a href="cliente.html" class="btn btn-secondary">Área do Cliente</a>
+        </div>
+
+        <!-- MENSAGENS -->
+        <div id="message-container" class="mb-6 hidden">
+            <div id="message-text" class="p-4 rounded-md"></div>
+        </div>
+
+        <!-- ÁREA ADMINISTRATIVA -->
+        <div id="admin-view" class="space-y-6">
+            <!-- Estatísticas Rápidas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="card p-4 text-center">
+                    <h3 class="text-lg font-semibold text-gray-700">Total de Aulas</h3>
+                    <p id="total-classes" class="text-3xl font-bold text-blue-600">0</p>
+                </div>
+                <div class="card p-4 text-center">
+                    <h3 class="text-lg font-semibold text-gray-700">Agendamentos</h3>
+                    <p id="total-bookings" class="text-3xl font-bold text-green-600">0</p>
+                </div>
+                <div class="card p-4 text-center">
+                    <h3 class="text-lg font-semibold text-gray-700">Vagas Disponíveis</h3>
+                    <p id="available-spots" class="text-3xl font-bold text-purple-600">0</p>
+                </div>
+            </div>
+            
+            <!-- Adicionar Nova Aula -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Adicionar Nova Aula</h3>
+                <form id="add-class-form" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="admin-class-name" class="block text-sm font-medium text-gray-700 mb-1">Nome da Aula</label>
+                            <input type="text" id="admin-class-name" name="name" class="input-field" placeholder="Ex: Yoga, Pilates..." required>
+                        </div>
+                        <div>
+                            <label for="admin-class-instructor" class="block text-sm font-medium text-gray-700 mb-1">Instrutor</label>
+                            <input type="text" id="admin-class-instructor" name="instructor" class="input-field" placeholder="Nome do instrutor" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="admin-class-time" class="block text-sm font-medium text-gray-700 mb-1">Horário</label>
+                            <input type="time" id="admin-class-time" name="time" class="input-field" required>
+                        </div>
+                        <div>
+                            <label for="admin-class-capacity" class="block text-sm font-medium text-gray-700 mb-1">Capacidade Máxima</label>
+                            <input type="number" id="admin-class-capacity" name="capacity" class="input-field" placeholder="Ex: 20" required min="1">
+                        </div>
+                    </div>
+                    <button id="submit-btn" type="submit" class="w-full btn btn-primary">Adicionar Aula</button>
+                    <button id="cancel-edit-btn" type="button" class="w-full btn btn-secondary mt-2 hidden">Cancelar Edição</button>
+                </form>
+            </div>
+            
+            <!-- Gerenciar Aulas -->
+            <div class="card p-6">
+                <h3 class="text-xl font-semibold mb-4">Gerenciar Aulas</h3>
+                <div id="admin-class-list" class="space-y-4">
+                    <!-- Aulas serão renderizadas aqui para gerenciamento -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmação para Exclusão -->
+    <div id="delete-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white p-6 max-w-sm w-full rounded-lg">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Confirmar Exclusão</h3>
+            <p class="text-gray-600 mb-6">Tem certeza que deseja excluir esta aula? Esta ação não pode ser desfeita.</p>
+            <div class="flex space-x-4">
+                <button id="confirm-delete-btn" class="flex-1 btn btn-danger">Excluir</button>
+                <button id="cancel-delete-btn" class="flex-1 btn btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa dados padrão se não existirem
+            const initializeDefaultClasses = () => {
+                const defaultClasses = [
+                    { id: 1, name: 'Yoga', instructor: 'Ana Santos', time: '08:00', capacity: 15, booked: 5 },
+                    { id: 2, name: 'Zumba', instructor: 'Pedro Rocha', time: '09:00', capacity: 20, booked: 18 },
+                    { id: 3, name: 'Spinning', instructor: 'Maria Costa', time: '18:30', capacity: 10, booked: 10 },
+                    { id: 4, name: 'Musculação', instructor: 'João Silva', time: '19:00', capacity: 30, booked: 25 },
+                ];
+                
+                if (!localStorage.getItem('techfitClasses')) {
+                    localStorage.setItem('techfitClasses', JSON.stringify(defaultClasses));
+                }
+                
+                return JSON.parse(localStorage.getItem('techfitClasses'));
+            };
+
+            // Carrega dados do localStorage (compatível com área do cliente)
+            let classes = initializeDefaultClasses();
+            
+            // Variáveis para controle de edição
+            let editingClassId = null;
+            let originalBookedCount = 0;
+            
+            // UI elements
+            const adminClassListEl = document.getElementById('admin-class-list');
+            const addClassForm = document.getElementById('add-class-form');
+            const messageContainer = document.getElementById('message-container');
+            const messageText = document.getElementById('message-text');
+            
+            // Estatísticas
+            const totalClassesEl = document.getElementById('total-classes');
+            const totalBookingsEl = document.getElementById('total-bookings');
+            const availableSpotsEl = document.getElementById('available-spots');
+
+            // Modal de exclusão
+            const deleteModal = document.getElementById('delete-modal');
+            const confirmDeleteBtn = document.getElementById('confirm-delete-btn');
+            const cancelDeleteBtn = document.getElementById('cancel-delete-btn');
+            let classToDelete = null;
+
+            // Salva dados no localStorage (mantém compatibilidade)
+            const saveClasses = () => {
+                localStorage.setItem('techfitClasses', JSON.stringify(classes));
+            };
+
+            // Exibe mensagens de notificação
+            const showMessage = (text, type = 'success') => {
+                messageText.textContent = text;
+                messageContainer.classList.remove('hidden', 'success-message', 'error-message');
+                if (type === 'success') {
+                    messageContainer.classList.add('success-message');
+                } else {
+                    messageContainer.classList.add('error-message');
+                }
+                setTimeout(() => {
+                    messageContainer.classList.add('hidden');
+                }, 3000);
+            };
+
+            // Atualiza estatísticas
+            const updateStatistics = () => {
+                const totalClasses = classes.length;
+                const totalBookings = classes.reduce((sum, cls) => sum + cls.booked, 0);
+                const totalCapacity = classes.reduce((sum, cls) => sum + cls.capacity, 0);
+                const availableSpots = totalCapacity - totalBookings;
+
+                totalClassesEl.textContent = totalClasses;
+                totalBookingsEl.textContent = totalBookings;
+                availableSpotsEl.textContent = availableSpots;
+            };
+
+            // Renderiza as aulas para o administrador
+            const renderAdminClasses = () => {
+                adminClassListEl.innerHTML = '';
+                
+                if (classes.length === 0) {
+                    adminClassListEl.innerHTML = '<div class="text-center text-gray-500 p-8">Nenhuma aula cadastrada.</div>';
+                    updateStatistics();
+                    return;
+                }
+
+                classes.forEach(cls => {
+                    const utilizacao = ((cls.booked / cls.capacity) * 100).toFixed(1);
+                    const card = document.createElement('div');
+                    card.classList.add('card', 'p-4', 'shadow-sm');
+                    card.innerHTML = `
+                        <div class="flex flex-col md:flex-row md:items-center justify-between space-y-3 md:space-y-0">
+                            <div class="flex-1">
+                                <h4 class="text-lg font-semibold text-gray-900">${cls.name}</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 mt-2 text-sm text-gray-600">
+                                    <div>Instrutor: ${cls.instructor}</div>
+                                    <div>Horário: ${cls.time}</div>
+                                    <div>Vagas: ${cls.booked}/${cls.capacity} (${utilizacao}%)</div>
+                                </div>
+                                <div class="mt-2">
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-blue-600 h-2 rounded-full" style="width: ${utilizacao}%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex space-x-2">
+                                <button data-id="${cls.id}" class="btn btn-secondary edit-btn">Editar</button>
+                                <button data-id="${cls.id}" class="btn btn-danger delete-btn">Excluir</button>
+                            </div>
+                        </div>
+                    `;
+                    adminClassListEl.appendChild(card);
+                });
+                
+                updateStatistics();
+            };
+
+            // Função para resetar o formulário para modo de adição
+            const resetFormToAddMode = () => {
+                editingClassId = null;
+                originalBookedCount = 0;
+                document.getElementById('submit-btn').textContent = 'Adicionar Aula';
+                document.getElementById('cancel-edit-btn').classList.add('hidden');
+                addClassForm.reset();
+            };
+
+            // Adiciona nova aula ou salva edição (Admin)
+            addClassForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('admin-class-name').value.trim();
+                const instructor = document.getElementById('admin-class-instructor').value.trim();
+                const time = document.getElementById('admin-class-time').value;
+                const capacity = parseInt(document.getElementById('admin-class-capacity').value);
+
+                // Validações
+                if (!name || !instructor || !time || !capacity) {
+                    showMessage('Por favor, preencha todos os campos.', 'error');
+                    return;
+                }
+
+                if (capacity <= 0) {
+                    showMessage('A capacidade deve ser maior que zero.', 'error');
+                    return;
+                }
+
+                if (editingClassId !== null) {
+                    // Modo de edição - atualizar aula existente
+                    const classIndex = classes.findIndex(cls => cls.id === editingClassId);
+                    
+                    if (classIndex !== -1) {
+                        // Verifica se a nova capacidade não é menor que os alunos já matriculados
+                        if (capacity < originalBookedCount) {
+                            showMessage(`A capacidade não pode ser menor que ${originalBookedCount} (alunos já matriculados).`, 'error');
+                            return;
+                        }
+                        
+                        classes[classIndex] = {
+                            id: editingClassId,
+                            name: name,
+                            instructor: instructor,
+                            time: time,
+                            capacity: capacity,
+                            booked: originalBookedCount // Preserva os alunos matriculados
+                        };
+                        
+                        saveClasses();
+                        resetFormToAddMode();
+                        renderAdminClasses();
+                        showMessage('Aula atualizada com sucesso!');
+                    }
+                } else {
+                    // Modo de adição - criar nova aula
+                    const newClass = {
+                        id: classes.length > 0 ? Math.max(...classes.map(c => c.id)) + 1 : 1,
+                        name: name,
+                        instructor: instructor,
+                        time: time,
+                        capacity: capacity,
+                        booked: 0
+                    };
+                    
+                    classes.push(newClass);
+                    saveClasses();
+                    addClassForm.reset();
+                    renderAdminClasses();
+                    showMessage('Aula adicionada com sucesso!');
+                }
+            });
+            
+            // Botão cancelar edição
+            document.getElementById('cancel-edit-btn').addEventListener('click', () => {
+                resetFormToAddMode();
+                showMessage('Edição cancelada.', 'error');
+            });
+            
+            // Lidar com a exclusão de aulas (Admin)
+            adminClassListEl.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete-btn')) {
+                    const classId = parseInt(e.target.dataset.id);
+                    classToDelete = classId;
+                    deleteModal.classList.remove('hidden');
+                }
+                
+                if (e.target.classList.contains('edit-btn')) {
+                    const classId = parseInt(e.target.dataset.id);
+                    const classToEdit = classes.find(cls => cls.id === classId);
+                    
+                    if (classToEdit) {
+                        // Entra no modo de edição
+                        editingClassId = classId;
+                        originalBookedCount = classToEdit.booked;
+                        
+                        // Preenche o formulário
+                        document.getElementById('admin-class-name').value = classToEdit.name;
+                        document.getElementById('admin-class-instructor').value = classToEdit.instructor;
+                        document.getElementById('admin-class-time').value = classToEdit.time;
+                        document.getElementById('admin-class-capacity').value = classToEdit.capacity;
+                        
+                        // Atualiza interface para modo de edição
+                        document.getElementById('submit-btn').textContent = 'Salvar Alterações';
+                        document.getElementById('cancel-edit-btn').classList.remove('hidden');
+                        
+                        showMessage('Modo de edição ativado. Faça as alterações e clique em "Salvar Alterações".', 'success');
+                        
+                        // Scroll para o formulário
+                        document.querySelector('#add-class-form').scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+
+            // Modal de confirmação de exclusão
+            confirmDeleteBtn.addEventListener('click', () => {
+                if (classToDelete !== null) {
+                    classes = classes.filter(cls => cls.id !== classToDelete);
+                    saveClasses();
+                    renderAdminClasses();
+                    showMessage('Aula excluída com sucesso!', 'error');
+                    classToDelete = null;
+                    deleteModal.classList.add('hidden');
+                }
+            });
+
+            cancelDeleteBtn.addEventListener('click', () => {
+                classToDelete = null;
+                deleteModal.classList.add('hidden');
+            });
+
+            // Listener para mudanças no localStorage (para sincronizar com cliente)
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'techfitClasses') {
+                    classes = JSON.parse(e.newValue || '[]');
+                    renderAdminClasses();
+                }
+            });
+
+            // Atualiza dados periodicamente para sincronizar
+            setInterval(() => {
+                const currentData = JSON.parse(localStorage.getItem('techfitClasses') || '[]');
+                if (JSON.stringify(currentData) !== JSON.stringify(classes)) {
+                    classes = currentData;
+                    renderAdminClasses();
+                }
+            }, 2000);
+
+            // Inicia a aplicação
+            renderAdminClasses();
+        });
+    </script>
+
+</body>
+</html>
