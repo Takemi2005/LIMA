@@ -1,0 +1,158 @@
+/* General Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f0f2f5; /* Light grey background */
+}
+
+/* Header Styles */
+header {
+    background-color: #3a98d6; /* Indigo/dark purple */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.1em;
+    margin-top: 10px;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    background-color: #3a98d6; /* Slightly lighter purple for nav bar */
+    padding: 10px 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Main Content Area */
+main {
+    display: flex; /* Or use margin for centering */
+    justify-content: center;
+    padding: 20px;
+}
+
+.project-history {
+    background-color: white;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+    padding: 20px;
+    width: 80%; /* Adjust as needed */
+    max-width: 900px; /* Max width to prevent it from getting too wide */
+    margin-top: -30px; /* Overlaps slightly with the header */
+}
+
+.project-history h2 {
+    color: #3a98d6; /* Dark purple */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.project-history h3 {
+    color: #3a98d6; /* Dark purple */
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.project-history p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.project-history h4 {
+    color: #3a98d6; /* Dark purple */
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+/* ... (Resto do seu CSS, como o reset, body, header, nav, main, etc.) ... */
+
+/* 5. Estilos de Títulos no Conteúdo */
+
+/* REVISÃO: Estilo para H2 (Com Fundo Azul Claro) */
+.project-history h2 {
+    color: white; /* Cor da fonte branca para contraste */
+    background-color: #3a98d6; /* Mantenho o roxo escuro para o título principal "História do Projeto" */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    border-radius: 5px;
+    display: block; /* Garante que o fundo ocupe toda a largura */
+}
+
+/* REVISÃO: Estilo Específico para o H2 "Quando Começamos?" (Se você quiser o fundo azul claro) */
+/* Se o seu "Quando Começamos?" fosse h3 no HTML original, use o seletor 'h3' */
+/* Se for H2, podemos usar um seletor mais específico ou a classe do seu container azul anterior: */
+.project-history h2:nth-of-type(2) { /* Seleciona o segundo H2 (Quando Começamos?) */
+    background-color: #3a98d6; /* Azul claro (Cor de fundo sugerida) */
+    color: white; /* Cor da fonte roxa para contraste */
+    /* Remove a borda inferior se estiver no CSS anterior, pois o fundo a substitui */
+    border-bottom: none; 
+    display: inline-block; /* Faz o fundo envolver apenas o texto */
+    padding: 5px 10px;
+}
+
+
+/* 7. Seção "Quer saber mais?" */
+
+.more-info-box {
+    border: 1px solid #ADD8E6; /* Borda azul clara */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+/* REVISÃO: Estilo para H4 (Com Fundo Azul Claro) */
+.more-info-box h4 {
+    color: #226bd8; /* Cor da fonte roxa */
+    background-color: #ADD8E6; /* Azul claro para o fundo do H4 (Container Azul) */
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-radius: 3px;
+    display: block; /* Garante que o fundo ocupe toda a largura do box */
+    text-align: center; /* Centraliza o texto dentro do container H4 */
+}
+
+.more-info-box ul {
+    list-style: none; /* Remove a marca padrão */
+    display: flex;
+    flex-wrap: wrap; 
+    margin-bottom: 15px;
+}
+
+/* ... (Resto do seu CSS, como estilos de links, vídeo, bullet-icon, footer) ... */
+
+/* Garante que o iframe seja responsivo no container */
+.project-history iframe {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: 400px;
+    margin: 20px auto;
+}
