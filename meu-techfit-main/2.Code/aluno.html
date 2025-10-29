@@ -7,7 +7,9 @@
     <link rel="icon" type="image/png" href="meuTechFit-fav.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <style>
+
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f3f4f6;
@@ -64,33 +66,29 @@
     </style>
 </head>
 <!-- Barra superior TechFit -->
-<nav class="flex items-center justify-between py-4 px-6 bg-[#f3f4f6] shadow-md">
+<nav class="flex items-center justify-between py-4 px-8 bg-white shadow-lg rounded-b-xl">
     <div class="flex items-center gap-4">
         <a href="/">
-            <img src="img/meuTechFit-fav.png" alt="TechFit" class="h-10">
+            <img src="img/meuTechFit-fav.png" alt="TechFit" class="h-10 drop-shadow-md">
         </a>
-        <span class="text-xl font-bold text-[#0500ff]">TechFit</span>
+        <span class="text-2xl font-extrabold text-[#0500ff] tracking-tight">TechFit</span>
     </div>
-    <div class="flex items-center gap-6">
-        <div class="flex items-center gap-4 justify-center w-full">
-            <a href="https://www.smartfit.com.br/academias" class="btn btn-secondary" title="Academias">
+    <div class="flex items-center gap-8">
+        <a href="https://www.smartfit.com.br/academias" class="btn btn-secondary hover:bg-[#e0e7ff] hover:text-[#0500ff] transition" title="Academias">
             Academias
-            </a>
-            <a href="https://promo.smartfit.com/br/quero-ser-franqueado" class="btn btn-secondary" title="Seja um franqueado">
+        </a>
+        <a href="https://promo.smartfit.com/br/quero-ser-franqueado" class="btn btn-secondary hover:bg-[#e0e7ff] hover:text-[#0500ff] transition" title="Seja um franqueado">
             Seja um franqueado
-            </a>
-        </div>
-
-            <button id="view-aluno" class="btn btn-primary">Área do Aluno</button>
-            <button id="view-admin" class="btn btn-secondary">Área Administrativa</button>
-        </div>
-        <a href="/notificacoes" class="relative" title="Notificações">
-            <svg class="w-6 h-6 text-[#0500ff]" fill="none" viewBox="0 0 24 24">
-            <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5z" fill="currentColor"/>
+        </a>
+        <button id="view-aluno" class="btn btn-primary shadow hover:bg-[#1e1aff] transition">Área do Aluno</button>
+        <button id="view-admin" class="btn btn-secondary shadow hover:bg-[#e0e7ff] hover:text-[#0500ff] transition">Área Administrativa</button>
+        <a href="/notificacoes" class="relative group" title="Notificações">
+            <svg class="w-6 h-6 text-[#0500ff] group-hover:text-[#1e1aff] transition" fill="none" viewBox="0 0 24 24">
+                <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1zm-2 1H8v-6c0-2.48 1.51-4.5 4-4.5s4 2.02 4 4.5z" fill="currentColor"/>
             </svg>
         </a>
         <a href="/perfil" title="Perfil">
-            <img src="img/persona.jpg" alt="Perfil" class="w-8 h-8 rounded-full border" />
+            <img src="img/persona.jpg" alt="Perfil" class="w-9 h-9 rounded-full border-2 border-[#0500ff] shadow-md object-cover" />
         </a>
     </div>
 </nav>
@@ -102,6 +100,34 @@
 
         
         <header class="text-center mb-10">
+
+
+
+     /*<div id="fragment-206290da-4783-3440-44da-4bf86b55d777">
+  <section class="ssp-section"><a href="https://www.sp.senac.br/blog/historias" class="ssp-graduacao__banner-senac-investe-voce">
+    <div class="block-image-bg-gradient"></div>
+    <div class="block-text">
+     <h3>Senac na Minha História</h3>
+     <p>Conheça as histórias inspiradoras na nova seção do Blog.</p>
+    </div>
+    <div class="btn-saiba-mais">
+     Conhecer histórias
+    </div>
+    <picture data-fileentryid="97928982">
+     <source media="(max-width:300px)" srcset="/o/adaptive-media/image/97928982/Thumbnail-300x300/Senac-minha-historia.webp?t=1740427133263">
+     <source media="(max-width:375px) and (min-width:300px)" srcset="/o/adaptive-media/image/97928982/imagens-mobile-celular/Senac-minha-historia.webp?t=1740427133263">
+     <source media="(max-width:1000px) and (min-width:375px)" srcset="/o/adaptive-media/image/97928982/Preview-1000x0/Senac-minha-historia.webp?t=1740427133263">
+     <img src="https://www.sp.senac.br/documents/d/guest/senac-minha-historia" class="block-image-bg" alt="">
+    </picture> </a>
+  </section>
+ </div>*/
+
+
+
+
+
+
+
             <img src="img/academia.jpg" alt="TechFit" class="mx-auto mb-6 rounded-xl shadow-lg" style="max-width: 320px; object-fit: cover;">
             <p class="text-lg text-gray-600">Seu portal de agendamento de aulas</p>
         </header>
@@ -432,6 +458,7 @@
             // Inicia a aplicação na visualização do aluno
             switchView('aluno');
         });
+        
     </script>
 
 </body>
